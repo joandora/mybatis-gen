@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hzins.pluto.is.server.core.sqlserver.dao.THighsumWhitelistMapper" >
+  <resultMap id="BaseResultMap" type="com.hzins.pluto.is.server.core.sqlserver.entity.THighsumWhitelist" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="insure_num" property="insureNum" jdbcType="BIGINT" />
+    <result column="platform" property="platform" jdbcType="BIT" />
+    <result column="audit_type" property="auditType" jdbcType="BIT" />
+    <result column="audit_state" property="auditState" jdbcType="BIT" />
+    <result column="submit_type" property="submitType" jdbcType="BIT" />
+    <result column="applicant_cname" property="applicantCname" jdbcType="VARCHAR" />
+    <result column="pay_amount" property="payAmount" jdbcType="INTEGER" />
+    <result column="company_name" property="companyName" jdbcType="VARCHAR" />
+    <result column="product_name" property="productName" jdbcType="VARCHAR" />
+    <result column="insurant_id" property="insurantId" jdbcType="BIGINT" />
+    <result column="insurant_cname" property="insurantCname" jdbcType="VARCHAR" />
+    <result column="insurant_card_type_id" property="insurantCardTypeId" jdbcType="BIT" />
+    <result column="insurant_card_number" property="insurantCardNumber" jdbcType="VARCHAR" />
+    <result column="category_id" property="categoryId" jdbcType="INTEGER" />
+    <result column="passport_source" property="passportSource" jdbcType="BIT" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, insure_num, platform, audit_type, audit_state, submit_type, applicant_cname, 
+    pay_amount, company_name, product_name, insurant_id, insurant_cname, insurant_card_type_id, 
+    insurant_card_number, category_id, passport_source, user_id, user_name, update_time, 
+    create_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_highsum_audit
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_highsum_audit
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.hzins.pluto.is.server.core.sqlserver.entity.THighsumWhitelist" >
+    insert into t_highsum_audit (id, insure_num, platform, 
+      audit_type, audit_state, submit_type, 
+      applicant_cname, pay_amount, company_name, 
+      product_name, insurant_id, insurant_cname, 
+      insurant_card_type_id, insurant_card_number, category_id, 
+      passport_source, user_id, user_name, 
+      update_time, create_time)
+    values (#{id,jdbcType=BIGINT}, #{insureNum,jdbcType=BIGINT}, #{platform,jdbcType=BIT}, 
+      #{auditType,jdbcType=BIT}, #{auditState,jdbcType=BIT}, #{submitType,jdbcType=BIT}, 
+      #{applicantCname,jdbcType=VARCHAR}, #{payAmount,jdbcType=INTEGER}, #{companyName,jdbcType=VARCHAR}, 
+      #{productName,jdbcType=VARCHAR}, #{insurantId,jdbcType=BIGINT}, #{insurantCname,jdbcType=VARCHAR}, 
+      #{insurantCardTypeId,jdbcType=BIT}, #{insurantCardNumber,jdbcType=VARCHAR}, #{categoryId,jdbcType=INTEGER}, 
+      #{passportSource,jdbcType=BIT}, #{userId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hzins.pluto.is.server.core.sqlserver.entity.THighsumWhitelist" >
+    insert into t_highsum_audit
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="insureNum != null" >
+        insure_num,
+      </if>
+      <if test="platform != null" >
+        platform,
+      </if>
+      <if test="auditType != null" >
+        audit_type,
+      </if>
+      <if test="auditState != null" >
+        audit_state,
+      </if>
+      <if test="submitType != null" >
+        submit_type,
+      </if>
+      <if test="applicantCname != null" >
+        applicant_cname,
+      </if>
+      <if test="payAmount != null" >
+        pay_amount,
+      </if>
+      <if test="companyName != null" >
+        company_name,
+      </if>
+      <if test="productName != null" >
+        product_name,
+      </if>
+      <if test="insurantId != null" >
+        insurant_id,
+      </if>
+      <if test="insurantCname != null" >
+        insurant_cname,
+      </if>
+      <if test="insurantCardTypeId != null" >
+        insurant_card_type_id,
+      </if>
+      <if test="insurantCardNumber != null" >
+        insurant_card_number,
+      </if>
+      <if test="categoryId != null" >
+        category_id,
+      </if>
+      <if test="passportSource != null" >
+        passport_source,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="insureNum != null" >
+        #{insureNum,jdbcType=BIGINT},
+      </if>
+      <if test="platform != null" >
+        #{platform,jdbcType=BIT},
+      </if>
+      <if test="auditType != null" >
+        #{auditType,jdbcType=BIT},
+      </if>
+      <if test="auditState != null" >
+        #{auditState,jdbcType=BIT},
+      </if>
+      <if test="submitType != null" >
+        #{submitType,jdbcType=BIT},
+      </if>
+      <if test="applicantCname != null" >
+        #{applicantCname,jdbcType=VARCHAR},
+      </if>
+      <if test="payAmount != null" >
+        #{payAmount,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null" >
+        #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="insurantId != null" >
+        #{insurantId,jdbcType=BIGINT},
+      </if>
+      <if test="insurantCname != null" >
+        #{insurantCname,jdbcType=VARCHAR},
+      </if>
+      <if test="insurantCardTypeId != null" >
+        #{insurantCardTypeId,jdbcType=BIT},
+      </if>
+      <if test="insurantCardNumber != null" >
+        #{insurantCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null" >
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="passportSource != null" >
+        #{passportSource,jdbcType=BIT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hzins.pluto.is.server.core.sqlserver.entity.THighsumWhitelist" >
+    update t_highsum_audit
+    <set >
+      <if test="insureNum != null" >
+        insure_num = #{insureNum,jdbcType=BIGINT},
+      </if>
+      <if test="platform != null" >
+        platform = #{platform,jdbcType=BIT},
+      </if>
+      <if test="auditType != null" >
+        audit_type = #{auditType,jdbcType=BIT},
+      </if>
+      <if test="auditState != null" >
+        audit_state = #{auditState,jdbcType=BIT},
+      </if>
+      <if test="submitType != null" >
+        submit_type = #{submitType,jdbcType=BIT},
+      </if>
+      <if test="applicantCname != null" >
+        applicant_cname = #{applicantCname,jdbcType=VARCHAR},
+      </if>
+      <if test="payAmount != null" >
+        pay_amount = #{payAmount,jdbcType=INTEGER},
+      </if>
+      <if test="companyName != null" >
+        company_name = #{companyName,jdbcType=VARCHAR},
+      </if>
+      <if test="productName != null" >
+        product_name = #{productName,jdbcType=VARCHAR},
+      </if>
+      <if test="insurantId != null" >
+        insurant_id = #{insurantId,jdbcType=BIGINT},
+      </if>
+      <if test="insurantCname != null" >
+        insurant_cname = #{insurantCname,jdbcType=VARCHAR},
+      </if>
+      <if test="insurantCardTypeId != null" >
+        insurant_card_type_id = #{insurantCardTypeId,jdbcType=BIT},
+      </if>
+      <if test="insurantCardNumber != null" >
+        insurant_card_number = #{insurantCardNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null" >
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="passportSource != null" >
+        passport_source = #{passportSource,jdbcType=BIT},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hzins.pluto.is.server.core.sqlserver.entity.THighsumWhitelist" >
+    update t_highsum_audit
+    set insure_num = #{insureNum,jdbcType=BIGINT},
+      platform = #{platform,jdbcType=BIT},
+      audit_type = #{auditType,jdbcType=BIT},
+      audit_state = #{auditState,jdbcType=BIT},
+      submit_type = #{submitType,jdbcType=BIT},
+      applicant_cname = #{applicantCname,jdbcType=VARCHAR},
+      pay_amount = #{payAmount,jdbcType=INTEGER},
+      company_name = #{companyName,jdbcType=VARCHAR},
+      product_name = #{productName,jdbcType=VARCHAR},
+      insurant_id = #{insurantId,jdbcType=BIGINT},
+      insurant_cname = #{insurantCname,jdbcType=VARCHAR},
+      insurant_card_type_id = #{insurantCardTypeId,jdbcType=BIT},
+      insurant_card_number = #{insurantCardNumber,jdbcType=VARCHAR},
+      category_id = #{categoryId,jdbcType=INTEGER},
+      passport_source = #{passportSource,jdbcType=BIT},
+      user_id = #{userId,jdbcType=BIGINT},
+      user_name = #{userName,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
